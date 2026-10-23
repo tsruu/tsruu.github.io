@@ -1,29 +1,123 @@
+:root {
+  color-scheme: light;
+  --bg: #faf6ed;
+  --text: #302d28;
+  --muted: #6f675c;
+  --link: #765538;
+  --link-hover: #513820;
+  --rule: #e6dccb;
+  --tick: #b9aa97;
+  --dot-paper: #9c4227;
+  --dot-position: #5b6e85;
+  --dot-award: #c8902a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #1b1916;
+    --text: #e7e0d3;
+    --muted: #a2988a;
+    --link: #d6a878;
+    --link-hover: #ecc49a;
+    --rule: #3a342c;
+    --tick: #5c5348;
+    --dot-paper: #e3896b;
+    --dot-position: #9fb3c9;
+    --dot-award: #e8b75c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1b1916;
+  --text: #e7e0d3;
+  --muted: #a2988a;
+  --link: #d6a878;
+  --link-hover: #ecc49a;
+  --rule: #3a342c;
+  --tick: #5c5348;
+  --dot-paper: #e3896b;
+  --dot-position: #9fb3c9;
+  --dot-award: #e8b75c;
+}
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: #faf6ed;
-  color: #302d28;
+  background-color: var(--bg);
+  color: var(--text);
   font: 18px/1.6 Georgia, serif;
+  transition: background-color .2s ease, color .2s ease;
 }
-main { max-width: 720px; margin: 0 auto; padding: 64px 20px; }
-a { color: #765538; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-a:hover { color: #513820; }
-a:focus-visible { outline: 2px solid #765538; outline-offset: 3px; }
+main { position: relative; max-width: 720px; margin: 0 auto; padding: 64px 20px; }
+.theme-toggle {
+  position: absolute; top: 64px; right: 20px; display: grid; place-items: center;
+  width: 32px; height: 32px; padding: 0; border: 0; background: transparent;
+  color: var(--muted); cursor: pointer;
+}
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { color: var(--link); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+}
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+a:hover { color: var(--link-hover); }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 h1, h2, .links, .meta, footer { font-family: -apple-system, system-ui, "Segoe UI", sans-serif; }
-h1 { margin: 0 0 8px; font-size: 2.1rem; font-weight: 650; line-height: 1.25; }
+h1 { margin: 0 0 8px; padding-right: 40px; font-size: 2.1rem; font-weight: 650; line-height: 1.25; }
 .links { margin: 0 0 32px; font-size: .9rem; line-height: 1.8; }
 p { margin: 0 0 18px; }
 section { margin-top: 42px; }
 h2 { margin: 0 0 20px; font-size: .95rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .entry { margin-bottom: 22px; }
 .entry > a { display: inline-block; line-height: 1.45; }
-.meta { margin: 3px 0 0; color: #6f675c; font-size: .8rem; line-height: 1.5; }
+.meta { margin: 3px 0 0; color: var(--muted); font-size: .8rem; line-height: 1.5; }
 .news { margin: 0; padding: 0; list-style: none; }
 .news li { display: flex; gap: 18px; margin-bottom: 10px; line-height: 1.5; }
-.news .date { flex: 0 0 78px; padding-top: 3px; color: #6f675c; font: .8rem -apple-system, system-ui, "Segoe UI", sans-serif; }
-footer { margin-top: 48px; color: #6f675c; font-size: .8rem; }
+.news .date { flex: 0 0 78px; padding-top: 3px; color: var(--muted); font: .8rem -apple-system, system-ui, "Segoe UI", sans-serif; }
+.news[hidden] { display: none; }
+.timeline { width: 100%; }
+.timeline-track { position: relative; height: 46px; }
+.timeline-track::before { content: ""; position: absolute; top: 8px; left: 0; right: 0; height: 2px; background: var(--rule); }
+.timeline-dot {
+  position: absolute; top: 4px; z-index: 1; width: 10px; height: 10px; padding: 0;
+  border: 0; border-radius: 50%; background: var(--dot-color); cursor: pointer;
+  transform: translateX(-50%);
+}
+.timeline-paper { --dot-color: var(--dot-paper); }
+.timeline-position { --dot-color: var(--dot-position); }
+.timeline-award { --dot-color: var(--dot-award); }
+.timeline-dot:hover, .timeline-dot.is-active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--dot-color); }
+.timeline-dot:focus-visible { outline: 2px solid var(--link); outline-offset: 6px; }
+.timeline-year {
+  position: absolute; top: 23px; color: var(--muted);
+  font: 11px/1.3 -apple-system, system-ui, "Segoe UI", sans-serif;
+  transform: translateX(-50%);
+}
+.timeline-year::before { content: ""; position: absolute; left: 50%; bottom: calc(100% + 2px); width: 1px; height: 6px; background: var(--tick); }
+.timeline-row { display: flex; align-items: center; gap: 14px; min-height: 64px; }
+.timeline-detail { flex: 1; min-width: 0; font-size: 15px; line-height: 1.5; opacity: 1; transition: opacity .2s ease; }
+.timeline-detail.is-fading { opacity: 0; }
+.timeline-date { color: var(--link); font: 600 13px/1.5 -apple-system, system-ui, "Segoe UI", sans-serif; white-space: nowrap; }
+.timeline-controls { display: flex; flex: none; gap: 5px; }
+.timeline-controls button {
+  display: grid; place-items: center; width: 22px; height: 22px; padding: 0 0 2px;
+  border: 1px solid var(--rule); border-radius: 50%; background: transparent;
+  color: var(--muted); font: 17px/1 Georgia, serif; cursor: pointer;
+}
+.timeline-controls button:hover:not(:disabled) { color: var(--link); border-color: var(--link); }
+.timeline-controls button:disabled { opacity: .35; cursor: default; }
+.timeline-controls button:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+.timeline-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; color: var(--muted); font: 12px/1.5 -apple-system, system-ui, "Segoe UI", sans-serif; }
+.timeline-legend-item::before { content: "●"; margin-right: 5px; color: var(--dot-color); }
+footer { margin-top: 48px; color: var(--muted); font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) { body, .timeline-detail { transition: none; } }
 @media (max-width: 480px) {
   main { padding-top: 40px; }
+  .theme-toggle { top: 40px; }
   h1 { font-size: 1.85rem; }
   .news li { flex-direction: column; gap: 0; margin-bottom: 14px; }
   .news .date { flex-basis: auto; padding-top: 0; }
