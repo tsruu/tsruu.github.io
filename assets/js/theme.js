@@ -6,7 +6,7 @@
   const isDark = () => document.documentElement.dataset.theme === 'dark' ||
     (!document.documentElement.dataset.theme && systemDark.matches);
   const updateLabel = () => {
-    button.setAttribute('aria-label', `Switch to ${isDark() ? 'light' : 'dark'} mode`);
+    button.setAttribute('aria-checked', String(isDark()));
   };
 
   button.hidden = false;

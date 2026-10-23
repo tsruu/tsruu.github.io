@@ -1,0 +1,46 @@
+/*
+  Colour palettes. To switch, change data-palette on <html> in index.html to one of:
+  ink, oxblood, teal, mono, indigo, orange.
+  Each palette sets a light (-l) and dark (-d) value for every colour; style.css picks
+  between them based on the theme.
+*/
+:root {
+  --dot-position-l: #5b6e85; --dot-position-d: #9fb3c9;
+  --dot-award-l: #c8902a;    --dot-award-d: #e8b75c;
+}
+
+/* 1. Paper and ink blue */
+:root[data-palette="ink"] {
+  --bg-l: #ffffff; --text-l: #1f2328; --muted-l: #6b7280; --link-l: #1a5fb4; --link-hover-l: #0f3d75; --rule-l: #e5e7eb; --tick-l: #c2c7cf;
+  --bg-d: #0d1117; --text-d: #e6edf3; --muted-d: #8b949e; --link-d: #79b8ff; --link-hover-d: #a8d1ff; --rule-d: #30363d; --tick-d: #4a525c;
+}
+
+/* 2. Off-white and oxblood */
+:root[data-palette="oxblood"] {
+  --bg-l: #fbfbf9; --text-l: #222222; --muted-l: #6e6e6e; --link-l: #8b2635; --link-hover-l: #5f1824; --rule-l: #e6e4df; --tick-l: #bdbab3;
+  --bg-d: #121212; --text-d: #e8e6e3; --muted-d: #9a9a9a; --link-d: #e38b95; --link-hover-d: #f0b0b7; --rule-d: #2c2c2c; --tick-d: #555555;
+}
+
+/* 3. Cool grey and teal */
+:root[data-palette="teal"] {
+  --bg-l: #f7f8fa; --text-l: #1d2433; --muted-l: #677084; --link-l: #0f766e; --link-hover-l: #0b524d; --rule-l: #e2e5ea; --tick-l: #bcc2cc;
+  --bg-d: #0f1115; --text-d: #e3e6ec; --muted-d: #8b93a3; --link-d: #5eead4; --link-hover-d: #99f6e4; --rule-d: #262a31; --tick-d: #4b515b;
+}
+
+/* 4. Pure monochrome */
+:root[data-palette="mono"] {
+  --bg-l: #ffffff; --text-l: #111111; --muted-l: #6b6b6b; --link-l: #111111; --link-hover-l: #555555; --rule-l: #e5e5e5; --tick-l: #bdbdbd;
+  --bg-d: #000000; --text-d: #ededed; --muted-d: #9a9a9a; --link-d: #ededed; --link-hover-d: #ffffff; --rule-d: #2a2a2a; --tick-d: #555555;
+}
+
+/* 5. Soft white and indigo */
+:root[data-palette="indigo"] {
+  --bg-l: #fcfcfd; --text-l: #1e1e24; --muted-l: #6b6b78; --link-l: #4f46e5; --link-hover-l: #3730a3; --rule-l: #e6e6ec; --tick-l: #bfbfca;
+  --bg-d: #0b0b10; --text-d: #e7e7ee; --muted-d: #8f8fa0; --link-d: #a5b4fc; --link-hover-d: #c7d2fe; --rule-d: #26262f; --tick-d: #4d4d5a;
+}
+
+/* 6. White and burnt orange */
+:root[data-palette="orange"] {
+  --bg-l: #ffffff; --text-l: #1c1c1c; --muted-l: #6b6b6b; --link-l: #c2410c; --link-hover-l: #9a3412; --rule-l: #e7e5e4; --tick-l: #c4bfbb;
+  --bg-d: #121212; --text-d: #ececec; --muted-d: #9a9a9a; --link-d: #fb923c; --link-hover-d: #fdba74; --rule-d: #2c2c2c; --tick-d: #555555;
+}
