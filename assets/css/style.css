@@ -1,12 +1,12 @@
 :root {
   color-scheme: light;
-  --bg: #faf6ed;
-  --text: #302d28;
-  --muted: #6f675c;
+  --bg: #fdfdfc;
+  --text: #262626;
+  --muted: #6b6b6b;
   --link: #765538;
   --link-hover: #513820;
-  --rule: #e6dccb;
-  --tick: #b9aa97;
+  --rule: #e5e5e5;
+  --tick: #bdbdbd;
   --dot-paper: #9c4227;
   --dot-position: #5b6e85;
   --dot-award: #c8902a;
@@ -14,13 +14,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #1b1916;
-    --text: #e7e0d3;
-    --muted: #a2988a;
+    --bg: #111111;
+    --text: #e6e6e6;
+    --muted: #9c9c9c;
     --link: #d6a878;
     --link-hover: #ecc49a;
-    --rule: #3a342c;
-    --tick: #5c5348;
+    --rule: #2e2e2e;
+    --tick: #555555;
     --dot-paper: #e3896b;
     --dot-position: #9fb3c9;
     --dot-award: #e8b75c;
@@ -28,13 +28,13 @@
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #1b1916;
-  --text: #e7e0d3;
-  --muted: #a2988a;
+  --bg: #111111;
+  --text: #e6e6e6;
+  --muted: #9c9c9c;
   --link: #d6a878;
   --link-hover: #ecc49a;
-  --rule: #3a342c;
-  --tick: #5c5348;
+  --rule: #2e2e2e;
+  --tick: #555555;
   --dot-paper: #e3896b;
   --dot-position: #9fb3c9;
   --dot-award: #e8b75c;
