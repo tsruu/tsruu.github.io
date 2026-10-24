@@ -112,6 +112,10 @@
 
   function positionDots() {
     const width = track.getBoundingClientRect().width;
+    if (!width) {
+      dots.forEach((dot, i) => { dot.style.left = `${position(events[i].date.getTime())}%`; });
+      return;
+    }
     const min = width * 0.04;
     const max = width * 0.96;
     const x = events.map((event) => min + (max - min) * (event.date.getTime() - first) / (last - first || 1));
@@ -127,5 +131,7 @@
   list.hidden = true;
   show(active);
   positionDots();
-  window.addEventListener('resize', positionDots);
+  // Re-place the dots whenever the track's width changes (late CSS, fonts, resizes).
+  if ('ResizeObserver' in window) new ResizeObserver(positionDots).observe(track);
+  else window.addEventListener('resize', positionDots);
 })();
