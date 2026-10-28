@@ -21,7 +21,7 @@
 
   const timeline = document.createElement('div');
   timeline.className = 'timeline';
-  timeline.setAttribute('aria-label', 'News timeline');
+  timeline.setAttribute('aria-label', 'Updates timeline');
 
   const track = document.createElement('div');
   track.className = 'timeline-track';
